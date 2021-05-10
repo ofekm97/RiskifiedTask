@@ -1,5 +1,5 @@
 import { generalResponse, merchantChargeInterface } from "../APIs/charge-api";
-import { creditCardCompany } from "./creditCardCompany";
+import { CreditCardCompany } from "./creditCardCompany";
 
 interface VisaBodyInterface {
     fullName: string,
@@ -17,10 +17,9 @@ interface VisaResponse {
 }
 
 
-export class Visa extends creditCardCompany {
+export class Visa extends CreditCardCompany {
     constructor() {
         super();
-        this.chargeStatuses = {};
         this.name = "visa";
         this.identifier = "ofek";
         this.company_url = "https://interview.riskxint.com/visa/api/chargeCard";

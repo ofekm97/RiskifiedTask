@@ -1,5 +1,5 @@
-import logger from "../util/logger";
 import { merchantChargeInterface } from "../APIs/charge-api";
+import { isCompanyName } from "../creditCardCompanies/creditCardCompanyFactory";
 
 
 function validateRequestTypes(api: merchantChargeInterface): boolean {
@@ -14,14 +14,9 @@ function validateRequestTypes(api: merchantChargeInterface): boolean {
 }
 
 function validateRequestValues(api: merchantChargeInterface): boolean {
-    let expirationDateRegex = /^(0[1-9]|1[0-2])\/(([0-9]{4}|[0-9]{2}))$/
-    return (api.creditCardCompany == "visa" || api.creditCardCompany == "mastercard") &&
-        expirationDateRegex.test(api.expirationDate)
+    let expirationDateRegex = /^(0[1-9]|1[0-2])\/(([0-9]{4}|[0-9]{2}))$/ // check if format is "MM/YY"
+    return (isCompanyName(api.creditCardCompany)) && (expirationDateRegex.test(api.expirationDate))
 }
-
-// function validateRequestExistance(api: merchantChargeInterface): boolean {
-//     return (api.merchant && api.fullName && api.expirationDate && api.cvv && api.creditCardNumber && api.creditCardCompany && api.amount == undefined)
-// }
 
 export function validateRequest(api: merchantChargeInterface) {
     return validateRequestTypes(api) && validateRequestValues(api);

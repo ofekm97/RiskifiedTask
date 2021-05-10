@@ -1,5 +1,6 @@
 import { creditCardCompanyName } from "../creditCardCompanies/creditCardCompany";
 
+// interface for new merchat charge
 export interface merchantChargeInterface {
     merchant: string
     fullName: string,

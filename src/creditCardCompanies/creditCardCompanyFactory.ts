@@ -1,15 +1,23 @@
-import { creditCardCompany, creditCardCompanyName } from './creditCardCompany'
+import { CreditCardCompany } from './creditCardCompany'
 import { Visa } from './visa'
 import { Mastercard } from './mastercard'
 
+const creditCardCompanyNames = ['visa','mastercard'] as const;
+export type CreditCardCompanyName = typeof creditCardCompanyNames[number];
+
+export function isCompanyName(name: string): boolean {
+    return name in creditCardCompanyNames;
+}
+
 export class creditCardCompanyFactory {
-    private visa: creditCardCompany;
-    private mastercard: creditCardCompany;
+    private visa: CreditCardCompany;
+    private mastercard: CreditCardCompany;
 
     constructor() {
     }
 
-    public getCompanyByName(companyName: creditCardCompanyName) {
+    // Factory design pattern with singelton that returns each of the credit companies
+    public getCompanyByName(companyName: CreditCardCompanyName) {
         if (companyName == 'visa') {
             if (this.visa) {
                 return this.visa;

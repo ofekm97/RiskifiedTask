@@ -4,6 +4,7 @@ import logger from '../util/logger';
 import { validateRequest } from "../handlers/validator";
 
 const chargeController = {
+    // post request handlers
     post: (req: Request, res: Response, next: NextFunction) => {
         logger.info('recived api/charge post request');
         let charge: merchantChargeInterface = {
@@ -11,6 +12,7 @@ const chargeController = {
             ...req.body
         }
         if (!validateRequest(charge)) {
+            // invalid input - return error code 400
             res.status(400).send();
         } else {
             next(charge)

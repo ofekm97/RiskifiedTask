@@ -1,13 +1,12 @@
 import axios from "axios";
 import { merchantChargeInterface } from "../APIs/charge-api";
+import { CreditCardCompanyName } from "./creditCardCompanyFactory";
 
-export type creditCardCompanyName = "visa" | "mastercard"
 
-export abstract class creditCardCompany {
-    public name: creditCardCompanyName;
+export abstract class CreditCardCompany {
+    public name: CreditCardCompanyName;
     protected identifier: string;
     protected company_url: string;
-    protected chargeStatuses: object;
     private retries: number
 
     constructor() {
@@ -28,8 +27,11 @@ export abstract class creditCardCompany {
     amountOfRetries() {
         return this.retries;
     }
+    // build the relevent request body for the credit card company
     abstract buildRequestBody(charge_request: merchantChargeInterface): void;
+    // parse the response body from the credit card company
     abstract parseResponse(response: any): any;
     abstract isInfluenceFunds(data: any): any;
+    // get the Decline Reson
     abstract getDeclineReason(error: any): any;
 }

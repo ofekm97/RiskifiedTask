@@ -6,11 +6,13 @@ import { creditCardCompanyFactory } from '../creditCardCompanies/creditCardCompa
 
 const factory: creditCardCompanyFactory = new creditCardCompanyFactory();
 
+// commiting the payment by sending http req to the relevent company
 export function commitPayment(charge: merchantChargeInterface, req: Request, res: Response, next: NextFunction) {
     logger.info('trying to charge the credit card');
     commitPaymentWithRetries(charge, 1, next);
 }
 
+// sending and handling the http request to the credit card company
 function commitPaymentWithRetries(charge: merchantChargeInterface, retries: number, next: NextFunction) {
     let currentCompany = factory.getCompanyByName(charge.creditCardCompany);
     currentCompany.pay(charge)

@@ -1,5 +1,5 @@
 import { generalResponse, merchantChargeInterface } from "../APIs/charge-api";
-import { creditCardCompany } from "./creditCardCompany";
+import { CreditCardCompany } from "./creditCardCompany";
 import axios from "axios";
 
 interface MastercardBodyInterface {
@@ -17,10 +17,9 @@ interface MastercardResponse {
 }
 
 
-export class Mastercard extends creditCardCompany {
+export class Mastercard extends CreditCardCompany {
     constructor() {
         super();
-        this.chargeStatuses = {}
         this.name = "visa"
         this.company_url = `https://interview.riskxint.com/mastercard/capture_card`;
     }
