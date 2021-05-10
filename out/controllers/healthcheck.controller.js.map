@@ -1,0 +1,1 @@
+{"version":3,"file":"healthcheck.controller.js","sourceRoot":"","sources":["../../src/controllers/healthcheck.controller.ts"],"names":[],"mappings":";;;;;AACA,4DAAoC;AAEpC,MAAM,qBAAqB,GAAG;IAC1B,GAAG,EAAE,CAAC,GAAY,EAAE,GAAa,EAAE,EAAE;QACjC,gBAAM,CAAC,IAAI,CAAC,aAAa,CAAC,CAAC;QAC3B,GAAG,CAAC,IAAI,CAAC;YACL,MAAM,EAAE,IAAI;SACf,CAAC,CAAC;IACP,CAAC;CACJ,CAAC;AAGF,kBAAe,qBAAqB,CAAC"}
