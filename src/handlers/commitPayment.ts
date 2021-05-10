@@ -23,7 +23,7 @@ function commitPaymentWithRetries(charge: merchantChargeInterface, retries: numb
             }
         }).catch((err) => {
             if(retries <= currentCompany.amountOfRetries() && !currentCompany.isInfluenceFunds(err)) {
-                logger.info(`retries = ${retries}`)
+                logger.info(`charging failed. retring (retry number: ${retries})`)
                 setTimeout(commitPaymentWithRetries, Math.pow(retries,2)*1000, charge, retries+1, next);
             }
             else {
