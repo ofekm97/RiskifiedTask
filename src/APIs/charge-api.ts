@@ -1,11 +1,12 @@
-import { creditCardCompanyName } from "../creditCardCompanies/creditCardCompany";
+import { CreditCardCompanyName } from "../creditCardCompanies/creditCardCompanyFactory";
+
 
 // interface for new merchat charge
 export interface merchantChargeInterface {
     merchant: string
     fullName: string,
     creditCardNumber: string,
-    creditCardCompany: creditCardCompanyName,
+    creditCardCompany: CreditCardCompanyName,
     expirationDate: string,
     cvv: string,
     amount: number,

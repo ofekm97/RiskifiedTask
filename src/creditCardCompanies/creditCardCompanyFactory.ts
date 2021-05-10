@@ -6,7 +6,7 @@ const creditCardCompanyNames = ['visa','mastercard'] as const;
 export type CreditCardCompanyName = typeof creditCardCompanyNames[number];
 
 export function isCompanyName(name: string): boolean {
-    return name in creditCardCompanyNames;
+    return creditCardCompanyNames.includes(name as CreditCardCompanyName);
 }
 
 export class creditCardCompanyFactory {

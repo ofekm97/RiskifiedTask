@@ -24,6 +24,7 @@ function commitPaymentWithRetries(charge: merchantChargeInterface, retries: numb
                 throw response
             }
         }).catch((err) => {
+            // if request failed retry (unless influence funds)
             if(retries <= currentCompany.amountOfRetries() && !currentCompany.isInfluenceFunds(err)) {
                 logger.info(`charging failed. retring (retry number: ${retries})`)
                 setTimeout(commitPaymentWithRetries, Math.pow(retries,2)*1000, charge, retries+1, next);

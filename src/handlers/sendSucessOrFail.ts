@@ -10,5 +10,6 @@ export function returnSuccessOrFailed(parsed_response: generalResponse, req: Req
         logger.info(`Charge Failed: ${parsed_response.error}`)
     } else {
         res.sendStatus(parsed_response.status)
+        logger.info(`Charge suceeded: ${parsed_response.status}`)
     }
 }
